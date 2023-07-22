@@ -1,10 +1,9 @@
-// import "./App.css";
-import Myapp from "./components/Myapp";
+import AppRoute from "./router/AppRoute";
 
 function App() {
   return (
     <>
-      <Myapp />
+      <AppRoute />
     </>
   );
 }
