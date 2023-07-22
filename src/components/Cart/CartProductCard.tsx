@@ -1,6 +1,14 @@
 import React from "react";
 import { Button } from "@mui/material";
-const CartProductCard = () => {
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import {
+  increaseProductQty,
+  decreaseProductQty,
+} from "../../features/cart/cart-slice";
+const CartProductCard = (props) => {
+  const dispatch = useAppDispatch();
+  // const data = useAppSelector((s) => s.cart);
+  // console.log("== form cart ", data);
   return (
     <div
       style={{
@@ -10,18 +18,46 @@ const CartProductCard = () => {
       }}
     >
       <div className="productDetailed">
-        <p>product Id: </p>
-        <p>Product Catagory</p>
-        <p>product price</p>
+        <p>product Id:{props?.item?.id} </p>
+        <p>
+          Product Catagory
+          <b>
+            <u>{props?.item.catagory}</u>
+          </b>
+        </p>
+        <p>
+          product price:
+          <b>
+            <u>{props?.item.price}</u>
+          </b>
+        </p>
       </div>
 
       <div
         className="buttonContainer"
         style={{ height: "50px", display: "flex" }}
       >
-        <Button variant="outlined">+</Button>
-        <p>Product Qty: {"5"}</p>
-        <Button variant="outlined">-</Button>
+        <Button
+          onClick={() => {
+            dispatch(
+              increaseProductQty({ id: props.item.id, price: props.item.price })
+            );
+          }}
+          variant="outlined"
+        >
+          +
+        </Button>
+        <p>Product Qty: {props?.item?.reqQty}</p>
+        <Button
+          onClick={() => {
+            dispatch(
+              decreaseProductQty({ id: props.item.id, price: props.item.price })
+            );
+          }}
+          variant="outlined"
+        >
+          -
+        </Button>
       </div>
     </div>
   );

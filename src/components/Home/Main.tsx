@@ -1,7 +1,8 @@
-import React from "react";
 import ProductCart from "../common/ProductCart";
-
+import { useFetchproductsQuery } from "../../features/products_data/products_api";
 const Main = () => {
+  const { data = { data: [] }, isFetching } = useFetchproductsQuery();
+  console.log(data);
   return (
     <>
       <h2>Product List</h2>
@@ -13,14 +14,22 @@ const Main = () => {
           flexWrap: "wrap",
         }}
       >
-        {[1, 2, 3, 5, 8, 6, 5, 2, 5, 5].map((item, i) => {
-          return (
-            <div key={i * 0.22552}>
-              <ProductCart />
-            </div>
-          );
-        })}
+        {/* <div> */}
+        {isFetching ? (
+          <h1>Loading data.....</h1>
+        ) : (
+          <>
+            {data.data.map((item, i) => {
+              return (
+                <div key={i * 0.22552}>
+                  <ProductCart item={item} />
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
+      {/* </div> */}
     </>
   );
 };

@@ -4,7 +4,10 @@ import DropDown from "../common/DropDown";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HistoryIcon from "@mui/icons-material/History";
+
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <nav
@@ -47,12 +50,22 @@ const Header = () => {
             alignItems: "center",
           }}
         >
-          <Button variant="outlined">
+          <Button
+            onClick={() => {
+              navigate("/history");
+            }}
+            variant="outlined"
+          >
             History
             <HistoryIcon />
           </Button>
           <br />
-          <Button variant="outlined">
+          <Button
+            onClick={() => {
+              navigate("/cart");
+            }}
+            variant="outlined"
+          >
             cart
             <ShoppingCartIcon />
           </Button>
