@@ -4,12 +4,32 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useAppSelector } from "../../app/hooks";
+export default function DropDown(props) {
+  const [catagoryOptionArr, setcatagoryOptionArr] = React.useState([]);
+  const data = useAppSelector((s) => s.productfilterData.Filter);
 
-export default function DropDown() {
-  const [age, setAge] = React.useState("");
+  React.useEffect(() => {
+    function findoptionForDropdown() {
+      let set = new Set();
+      let arr = [];
+
+      for (let i in data) {
+        set.add(data[i].data);
+      }
+      for (let i of set) {
+        arr.push(i);
+      }
+      setcatagoryOptionArr(arr);
+      // console.log(catagoryOptionArr);
+    }
+    findoptionForDropdown();
+  }, [data]);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    // console.log(event.target);
+    // console.log(props);
+    props.setOption(event.target.value as string);
   };
 
   return (
@@ -21,13 +41,17 @@ export default function DropDown() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={props.option}
           label="select product Catagory"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {catagoryOptionArr.map((item, i) => {
+            return (
+              <MenuItem key={i * 55.25} value={`${item}`}>
+                {item}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     </Box>

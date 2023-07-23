@@ -1,8 +1,23 @@
 import ProductCart from "../common/ProductCart";
+import { useEffect, useState } from "react";
 import { useFetchproductsQuery } from "../../features/products_data/products_api";
-const Main = () => {
-  const { data = { data: [] }, isFetching } = useFetchproductsQuery();
-  console.log(data);
+// import { useState } from "react";
+// import { useAppDispatch, useAppSelector } from "../../app/hooks";
+// import { addFetchProducts } from "../../features/products_data/productDataFilter_slice";
+const Main = (props) => {
+  const { isFetching } = useFetchproductsQuery();
+  // const [filterProductData, setfilterProductData] = useState([]);
+  // const productFilterData = useAppSelector((s) => s.productfilterData);
+  // const dispatch = useAppDispatch();
+  // console.log(props);
+  // function addData() {
+  // setfilterProductData(data.data);
+  // dispatch(addFetchProducts(data.data));
+  // }
+  // useEffect(() => {
+  //   addData();
+  // }, [data]);
+
   return (
     <>
       <h2>Product List</h2>
@@ -14,22 +29,21 @@ const Main = () => {
           flexWrap: "wrap",
         }}
       >
-        {/* <div> */}
         {isFetching ? (
           <h1>Loading data.....</h1>
         ) : (
           <>
-            {data.data.map((item, i) => {
+            {props.productData.map((item, i) => {
               return (
                 <div key={i * 0.22552}>
-                  <ProductCart item={item} />
+                  {" "}
+                  <ProductCart item={item} />{" "}
                 </div>
               );
             })}
           </>
         )}
       </div>
-      {/* </div> */}
     </>
   );
 };

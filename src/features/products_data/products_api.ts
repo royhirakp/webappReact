@@ -6,11 +6,6 @@ interface ProductsData {
   catagory: string;
   Qty: string;
   __v: number;
-  //     "_id": "64bc3f02d254208399f80417",
-  // "price": "15",
-  // "catagory": "two",
-  // "Qty": 50555,
-  // "__v": 0
 }
 export const productapiSlice = createApi({
   reducerPath: "api",
@@ -28,8 +23,32 @@ export const productapiSlice = createApi({
           return `/products`;
         },
       }),
+      updateProductQty: builder.mutation({
+        query(body) {
+          return {
+            url: "/products",
+            method: "PUT",
+            body: body,
+          };
+        },
+      }),
+      fetchCartHistory: builder.query({
+        query() {
+          return `/history`;
+        },
+      }),
+      putHistry: builder.mutation({
+        query(body) {
+          return { url: "/history", method: "POST", body: body };
+        },
+      }),
     };
   },
 });
 
-export const { useFetchproductsQuery } = productapiSlice;
+export const {
+  useFetchproductsQuery,
+  useFetchCartHistoryQuery,
+  usePutHistryMutation,
+  useUpdateProductQtyMutation,
+} = productapiSlice;

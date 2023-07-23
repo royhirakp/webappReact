@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { addItem, removeItem } from "../../features/cart/cart-slice";
-const ProductCart = ({ item }) => {
+const ProductCart = (props) => {
   const [cartaddStatus, setCartAddStatus] = useState(false);
   // console.log(props);
   const dispatch = useAppDispatch();
@@ -21,9 +21,9 @@ const ProductCart = ({ item }) => {
           console.log("working");
           dispatch(
             addItem({
-              id: item._id,
-              price: item.price,
-              catagory: item.catagory,
+              id: props?.item?._id,
+              price: props?.item.price,
+              catagory: props?.item.catagory,
               reqQty: 1,
             })
           );
@@ -36,9 +36,9 @@ const ProductCart = ({ item }) => {
 
       <button onClick={() => dispatch(removeItem("12355"))}>remove</button>
 
-      <p>Catagory: {item?.catagory}</p>
-      <p>price: {item?.price}</p>
-      <p>abalable qty:{item.Qty}</p>
+      <p>Catagory: {props?.item?.catagory}</p>
+      <p>price: {props?.item?.price}</p>
+      <p>abalable qty:{props?.item.Qty}</p>
       <img src="" alt="dato image " />
     </div>
   );
