@@ -1,22 +1,8 @@
 import ProductCart from "../common/ProductCart";
-import { useEffect, useState } from "react";
 import { useFetchproductsQuery } from "../../features/products_data/products_api";
 // import { useState } from "react";
-// import { useAppDispatch, useAppSelector } from "../../app/hooks";
-// import { addFetchProducts } from "../../features/products_data/productDataFilter_slice";
 const Main = (props) => {
   const { isFetching } = useFetchproductsQuery();
-  // const [filterProductData, setfilterProductData] = useState([]);
-  // const productFilterData = useAppSelector((s) => s.productfilterData);
-  // const dispatch = useAppDispatch();
-  // console.log(props);
-  // function addData() {
-  // setfilterProductData(data.data);
-  // dispatch(addFetchProducts(data.data));
-  // }
-  // useEffect(() => {
-  //   addData();
-  // }, [data]);
 
   return (
     <>

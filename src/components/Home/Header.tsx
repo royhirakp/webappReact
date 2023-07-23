@@ -18,11 +18,9 @@ const Header = (props) => {
   const data = useAppSelector((s) => s);
   const dispatch = useAppDispatch();
   const filterData = useAppSelector((s) => s.productfilterData);
-  // console.log(dataForFilter.data);
 
   useEffect(() => {
     dispatch(addFetchProducts(props.productData));
-    // console.log(props.productData);
   }, [props.productData]);
 
   const [option, setOption] = useState("");
