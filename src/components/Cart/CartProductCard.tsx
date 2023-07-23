@@ -1,14 +1,12 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import {
   increaseProductQty,
   decreaseProductQty,
 } from "../../features/cart/cart-slice";
 const CartProductCard = (props) => {
   const dispatch = useAppDispatch();
-  // const data = useAppSelector((s) => s.cart);
-  // console.log("== form cart ", data);
   return (
     <div
       style={{
@@ -63,4 +61,4 @@ const CartProductCard = (props) => {
   );
 };
 
-export default CartProductCard;
+export default React.memo(CartProductCard);

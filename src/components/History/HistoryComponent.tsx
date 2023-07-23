@@ -1,11 +1,16 @@
 // import React from "react";
 import HistoryProductCard from "./HistoryProductCard";
 import { useFetchCartHistoryQuery } from "../../features/products_data/products_api";
+import { useEffect } from "react";
 const HistoryComponent = () => {
-  const { data = [], isFetching } = useFetchCartHistoryQuery();
+  const { data = [], isFetching, refetch } = useFetchCartHistoryQuery();
+
+  useEffect(() => {
+    refetch();
+  }, []);
   return (
     <div>
-      <p>Total orders: 5</p>
+      <p>Total orders: static</p>
       {isFetching ? <h1>Loading.....</h1> : ""}
       {data?.data?.map((item, i) => {
         return (

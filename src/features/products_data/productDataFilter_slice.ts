@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface Item {
   id: string;
@@ -6,9 +6,7 @@ interface Item {
   catagory: string;
   Qty: string;
   __v: number;
-  // Add other properties here if necessary
 }
-// interface MinMax {}
 interface Filter {
   data: string;
 }
@@ -31,13 +29,10 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     addFetchProducts(state, actions) {
-      // state.items = actions.payload;
       // add min and max value
       let max = 0;
       let min = +Infinity;
       let arr = actions.payload;
-      let catagorySet = new Set();
-      //   console.log(arr, "array form filter slice ");
       for (let i = 0; i < arr.length; i++) {
         let price = arr[i].price * 1;
         if (price > max) {
@@ -46,14 +41,11 @@ const productsSlice = createSlice({
         if (price < min) {
           min = price;
         }
-        // state.Filter
-        // catagorySet.add();
+
         state.Filter.push({ data: arr[i].catagory });
       }
       state.maxValue = max;
       state.minValue = min;
-      //   state.Filter = catagoryArr;
-      // add catagory to the filter
     },
   },
 });

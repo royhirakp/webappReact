@@ -9,7 +9,6 @@ import { useAppSelector } from "../../app/hooks";
 const DropDown = (props) => {
   const [catagoryOptionArr, setcatagoryOptionArr] = React.useState([]);
   const data = useAppSelector((s) => s.productfilterData.Filter);
-
   const findoptionForDropdown = useCallback(() => {
     let set = new Set();
     let arr = [];
@@ -20,7 +19,7 @@ const DropDown = (props) => {
       arr.push(i);
     }
     setcatagoryOptionArr(arr);
-  }, []);
+  }, [data]);
   React.useEffect(() => {
     findoptionForDropdown();
   }, [data]);
