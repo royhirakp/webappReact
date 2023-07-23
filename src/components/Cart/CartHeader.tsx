@@ -2,10 +2,6 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { useUpdateProductQtyMutation } from "../../features/products_data/products_api";
-// import {
-//   // useFetchDataQuery,
-//   // usePostFormDataMutation,
-// } from "../../features/products_data/instacloneApi";
 
 import { usePutHistryMutation } from "../../features/products_data/products_api";
 
@@ -15,11 +11,6 @@ const CartHeader = () => {
   const [updateProductQty, { isLoading: updateQtyIsLoading }] =
     useUpdateProductQtyMutation();
   const [addHistory, { isLoading, isSuccess }] = usePutHistryMutation();
-  // console.log(cartData.items);
-
-  // const [] =useUpdateProductQtyMutation()
-  // console.log(isFetching, "is fetching");
-  // console.log(data, "=== firm card geaderr**************");
   return (
     <div>
       <h1> product Cart:</h1>

@@ -5,7 +5,10 @@ const WelcomePage = () => {
   const navigate = useNavigate();
   return (
     <div>
-      welcome to the webapp; click the button to start
+      <h1>Welcome to the web app. Please click the button to get started.</h1>
+      <p>nb: no Authorization and authentication</p>
+      <p>React + TypeScript + Vite</p>
+      <p>Expressjs + MongoDb</p>
       <button
         onClick={() => {
           navigate("/home");

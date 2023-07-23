@@ -1,13 +1,12 @@
 import Header from "../components/Home/Header";
 import Main from "../components/Home/Main";
 //demo
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useFetchproductsQuery } from "../features/products_data/products_api";
 
 const HomePage = () => {
   const [productData, setProductData] = useState([]);
   const { data = { data: [] } } = useFetchproductsQuery();
-  // console.log("product ==============", data.data, isFetching);
 
   useEffect(() => {
     setProductData(data.data);
@@ -24,4 +23,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default React.memo(HomePage);

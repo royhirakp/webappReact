@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { addItem, removeItem } from "../../features/cart/cart-slice";
 const ProductCart = (props) => {
@@ -18,7 +18,6 @@ const ProductCart = (props) => {
       <p>{cartaddStatus ? <>added to cart</> : ""}</p>
       <button
         onClick={() => {
-          console.log("working");
           dispatch(
             addItem({
               id: props?.item?._id,
@@ -44,4 +43,4 @@ const ProductCart = (props) => {
   );
 };
 
-export default ProductCart;
+export default React.memo(ProductCart);

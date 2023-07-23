@@ -1,6 +1,6 @@
 import ProductCart from "../common/ProductCart";
 import { useFetchproductsQuery } from "../../features/products_data/products_api";
-// import { useState } from "react";
+import React from "react";
 const Main = (props) => {
   const { isFetching } = useFetchproductsQuery();
 
@@ -22,8 +22,7 @@ const Main = (props) => {
             {props.productData.map((item, i) => {
               return (
                 <div key={i * 0.22552}>
-                  {" "}
-                  <ProductCart item={item} />{" "}
+                  <ProductCart item={item} />
                 </div>
               );
             })}
@@ -34,4 +33,4 @@ const Main = (props) => {
   );
 };
 
-export default Main;
+export default React.memo(Main);

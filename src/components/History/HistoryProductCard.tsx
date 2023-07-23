@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 const HistoryProductCard = (props) => {
   const [productDataSatus, setSetus] = useState(false);
-  console.log(props);
   return (
     <div style={{ border: "1px solid black" }}>
       <p>
@@ -60,4 +59,4 @@ const HistoryProductCard = (props) => {
   );
 };
 
-export default HistoryProductCard;
+export default React.memo(HistoryProductCard);

@@ -1,9 +1,8 @@
-import React from "react";
+// import React from "react";
 import HistoryProductCard from "./HistoryProductCard";
 import { useFetchCartHistoryQuery } from "../../features/products_data/products_api";
 const HistoryComponent = () => {
   const { data = [], isFetching } = useFetchCartHistoryQuery();
-  console.log(data);
   return (
     <div>
       <p>Total orders: 5</p>
